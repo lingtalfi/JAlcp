@@ -37,8 +37,17 @@ if ('undefined' === typeof AlcpHelper) {
              * the request is completed.
              *
              *
-             * Similarly, if the alcp response is an error, we fill the "error message"/"error message container" with that error message.
+             * Similarly, if the alcp response is an error, we create a clone of the "error message container", and fill the "error message"/"error message container" (of that clone) with that error message.
              * That's unless you override the error handler manually.
+             *
+             * Note: we prefer to use the clone technique rather than just hiding elements, because then it works better with bootstrap alerts.
+             * That's because bootstrap alerts are dismissible, which means the user can remove them from the dom.
+             * When he does, we need to recreate the alert's dom in order to put our error message in it.
+             * So, with the hiding workflow, if the user dismisses the alert, it's gone forever and we don't see subsequent errors that might occur.
+             *
+             *
+             *
+             *
              *
              * Finally, if you don't override it, the default httpError handler will behave the same as an erroneous alcp response (using whichever "error message"/"error message container" is available to display the error).
              *
@@ -91,8 +100,32 @@ if ('undefined' === typeof AlcpHelper) {
                 // PRE-FUNCTIONS
                 //----------------------------------------
                 var resetMessages = function () {
-                    jTheSuccess.hide();
-                    jTheError.hide();
+
+                    if (jTheSuccessTpl.length > 0) {
+
+                        jContext.find('.the-success-instance').remove();
+
+
+                        jTheSuccess = jTheSuccessTpl.clone();
+                        jTheSuccess.addClass("the-success-instance");
+                        jTheSuccessTpl.after(jTheSuccess);
+                        jTheSuccess.hide();
+
+                        jTheSuccessMessage = jTheSuccess.find(".the-success-message");
+                    }
+
+                    if (jTheErrorTpl.length > 0) {
+
+                        jContext.find('.the-error-instance').remove();
+
+
+                        jTheError = jTheErrorTpl.clone();
+                        jTheError.addClass("the-error-instance");
+                        jTheErrorTpl.after(jTheError);
+                        jTheError.hide();
+
+                        jTheErrorMessage = jTheError.find(".the-error-message");
+                    }
                 };
 
                 var triggerError = function (errMsg) {
@@ -129,10 +162,18 @@ if ('undefined' === typeof AlcpHelper) {
                 var before = options.before || function () {};
 
 
-                var jTheSuccess = jContext.find(".the-success");
-                var jTheSuccessMessage = jTheSuccess.find(".the-success-message");
-                var jTheError = jContext.find(".the-error");
-                var jTheErrorMessage = jTheError.find(".the-error-message");
+                var jTheSuccessTpl = jContext.find(".the-success");
+                var jTheErrorTpl = jContext.find(".the-error");
+
+                jTheSuccessTpl.hide();
+                jTheErrorTpl.hide();
+
+
+                var jTheSuccess = null;
+                var jTheSuccessMessage = null;
+                var jTheError = null;
+                var jTheErrorMessage = null;
+
 
                 var jTheLoader = jContext.find('.the-loader');
 

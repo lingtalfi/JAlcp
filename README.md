@@ -1,6 +1,6 @@
 JAlcp
 ===========
-2021-06-24
+2021-06-24 -> 2021-06-29
 
 A js tool to help with the [alcp protocol](https://github.com/lingtalfi/Light_AjaxHandler/blob/master/doc/pages/alcp-response.md).
 
@@ -168,6 +168,10 @@ See more details in the source code of the **getContextualPostCallback** method.
 
 History Log
 =============
+
+- 1.0.1 -- 2021-06-29
+
+    - now the error/success container are destroyed/cloned rather than hidden/shown.
 
 - 1.0.0 -- 2021-06-24
 
