@@ -169,6 +169,10 @@ See more details in the source code of the **getContextualPostCallback** method.
 History Log
 =============
 
+- 1.0.4 -- 2021-08-09
+
+    - fix getContextualPostCallback throwing error jSuccess is null
+  
 - 1.0.3 -- 2021-08-09
 
     - add arguments list in method source code comment

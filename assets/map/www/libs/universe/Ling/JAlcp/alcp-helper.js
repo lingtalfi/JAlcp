@@ -197,7 +197,7 @@ if ('undefined' === typeof AlcpHelper) {
                         success: function (response, textStatus, jqXHR) {
                             resetMessages();
                             var jUserSuccessMessage = jTheSuccess;
-                            if (jTheSuccess.length > 0) {
+                            if (jTheSuccess && jTheSuccess.length > 0) {
                                 jTheSuccess.show();
                                 if (jTheSuccessMessage.length > 0) {
                                     jUserSuccessMessage = jTheSuccessMessage;
@@ -209,7 +209,7 @@ if ('undefined' === typeof AlcpHelper) {
                         error: function (error, response, textStatus, jqXHR) {
                             resetMessages();
                             var jUserErrorMessage = jTheError;
-                            if (jTheError.length > 0) {
+                            if (jTheError && jTheError.length > 0) {
                                 jTheError.show();
                                 if (jTheErrorMessage.length > 0) {
                                     jUserErrorMessage = jTheErrorMessage;
