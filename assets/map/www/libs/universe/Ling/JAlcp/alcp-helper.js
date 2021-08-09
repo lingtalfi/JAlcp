@@ -62,6 +62,7 @@ if ('undefined' === typeof AlcpHelper) {
              * The following options are available:
              * - loader: jquery object representing the loader
              * - success: a callable to execute in case of a successful alcp response.
+             *      The arguments list is ( jTheSuccessMsg, response, textStatus, jqXHR);
              *      It takes the following arguments:
              *      - jTheSuccessMsg: a jquery object being either:
              *          - empty if neither the "success message container" object nor the "success message" object are defined.
@@ -73,6 +74,7 @@ if ('undefined' === typeof AlcpHelper) {
              *
              *
              * - error: a callable to execute in case of an erroneous alcp response.
+             *      The arguments list is ( defaultCb, jTheErrorMsg, error, response, textStatus, jqXHR);
              *      It takes the following arguments:
              *      - defaultCb: access to our default callback, just in case you need it
              *      - jTheErrorMsg: a jquery object being either:

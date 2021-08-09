@@ -1,6 +1,6 @@
 JAlcp
 ===========
-2021-06-24 -> 2021-07-30
+2021-06-24 -> 2021-08-09
 
 A js tool to help with the [alcp protocol](https://github.com/lingtalfi/Light_AjaxHandler/blob/master/doc/pages/alcp-response.md).
 
@@ -169,6 +169,10 @@ See more details in the source code of the **getContextualPostCallback** method.
 History Log
 =============
 
+- 1.0.3 -- 2021-08-09
+
+    - add arguments list in method source code comment
+  
 - 1.0.2 -- 2021-07-30
 
     - fix getContextualPostCallback throwing error if jTheSuccess is not defined
